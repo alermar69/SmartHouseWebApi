@@ -1,0 +1,37 @@
+﻿@using System.Collections
+@model SmartHouseDll.House
+
+<div class="panAdd">
+    <fieldset>
+        <legend>
+            Удалить комнату
+        </legend>
+        @Html.DropDownList("list_room", new SelectList(Model.Rooms.Values, "Name", "Name"))
+        <br />
+        <br />
+        <a id="delRoom_api" class="link_button" href="">Удалить</a>
+    </fieldset>
+</div>
+
+
+<div class="panAdd">
+    <fieldset>
+        <legend>
+            Удалить устройство
+        </legend>
+        @Html.DropDownList("list_room_device", new SelectList(Model.Rooms.Values, "Name", "Name", ViewBag.RoomName)))
+
+        @{
+            if (ViewBag.Devices == null)
+            {
+                ViewBag.Devices = new SelectList(Model.Rooms.Values.First().Devices.Values, "Name", "Name");
+            }
+        }
+        @Html.DropDownList("list_device", ViewBag.Devices as SelectList);
+        <br/>
+        <br/>
+        <a id="delDevice_api" class="link_button"  href="">Удалить</a>
+    </fieldset>
+</div>
+
+<script src="~/Scripts/DelTools.js"></script>

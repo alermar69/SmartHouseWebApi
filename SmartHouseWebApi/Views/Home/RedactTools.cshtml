@@ -1,0 +1,41 @@
+﻿@model SmartHouseDll.House
+
+<div class="panAdd">
+    <fieldset>
+        <legend>
+            Редактировать комнату
+        </legend>
+        @Html.DropDownList("list_room", new SelectList(Model.Rooms.Values, "Name", "Name"))
+        <br />
+        <br />
+        @Html.TextBox("redactRoom", "", new { placeholder = "Новое имя комнаты" })
+        <br />
+        <br />
+        <a id="redRoom_api" class="link_button" href="">Редактировать</a>
+    </fieldset>
+</div>
+
+<div class="panAdd">
+    <fieldset>
+        <legend>
+            Редактировать устройство
+        </legend>
+        @Html.DropDownList("list_room_device", new SelectList(Model.Rooms.Values, "Name", "Name", ViewBag.RoomName)))
+
+        @{
+            if (ViewBag.Devices == null)
+            {
+                ViewBag.Devices = new SelectList(Model.Rooms.Values.First().Devices.Values, "Name", "Name");
+            }
+        }
+        @Html.DropDownList("list_device", ViewBag.Devices as SelectList);
+        <br />
+        <br />
+        @Html.TextBox("redactDevice", "", new { placeholder = "Новое имя устройства" })
+        <br />
+        <br />
+        <a id="redDevice_api" class="link_button" href="">Редактировать</a>
+    </fieldset>
+</div>
+
+<script src="~/Scripts/RedactTools.js"></script>

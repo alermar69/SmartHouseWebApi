@@ -1,0 +1,20 @@
+﻿@using SmartHouseDll
+@model Device
+
+@{
+    string id1 = ViewBag.room + "_" + ViewBag.device + "_onOff";
+}
+
+@if (Model.State == StateOnOff.Off)
+{
+    <a class="bt_api"  href="" command="on" typeofreturn="onOff" elemid1="@id1" elemid100="@ViewBag.Id100">
+        <img id="@id1" src="~/Content/Images/control_power.png" class="imgBt" />
+    </a>
+}
+else
+{
+    <a class="bt_api" href="" command="off" typeofreturn="onOff" elemid1="@id1" elemid100="@ViewBag.Id100">
+        <img id="@id1" src="~/Content/Images/control_power_blue.png" class="imgBt" />
+    </a>
+}
+

@@ -1,0 +1,16 @@
+﻿<div class="panTemper">
+    <img class="imgBt" src="~/Content/Images/Temper1.png"/>
+
+    @{
+        string id = ViewBag.room + "_" + ViewBag.device + "_temper";
+    }
+    <a class="bt_api" href="" command="t_plus" typeofreturn="temper" elemid="@id">
+        <img src="~/Content/Images/up_plus.png" class="imgBt" />
+    </a>
+
+    <span id="@id" class="labelTemperat">@ViewBag.temper</span>
+
+    <a class="bt_api" href="" command="t-" typeofreturn="temper" elemid="@id">
+        <img src="~/Content/Images/down_minus.png" class="imgBt imgBtV" />
+    </a>
+</div>

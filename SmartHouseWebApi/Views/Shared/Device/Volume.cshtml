@@ -1,0 +1,18 @@
+﻿<div class="panVolume">
+    <img class="imgBt" src="~/Content/Images/sound_low.png" />
+
+    @{
+        string id = ViewBag.room + "_" + ViewBag.device + "_volume";
+    }
+    <a class="bt_api" href="" command="vol_plus" typeOfReturn="volume" elemId="@id">
+        <img src="~/Content/Images/up_plus.png" class="imgBt" />
+    </a>
+
+
+    <span id="@id"  class="labelVolume">@ViewBag.vol</span>
+
+    <a class="bt_api" href="" command="vol-" typeofreturn="volume" elemid="@id">
+        <img src="~/Content/Images/down_minus.png" class="imgBt imgBtV" />
+    </a>
+</div>
+

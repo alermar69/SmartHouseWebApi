@@ -1,0 +1,59 @@
+﻿@using SmartHouseDll
+@model ClimatControl
+
+<div device="@Model.Name">
+    <div class="panLamp" device="@Model.NameId">
+        <span class="nameDevice">@Model.Name</span>
+        <img class="imgBt" src="~/Content/Images/hot.png" />
+        @{
+            ViewBag.device = Model.NameId;
+            ViewBag.temper = Model.Temperature;
+
+            Html.RenderPartial("Device/OnOff");
+        }
+        <span class="labelTemper">@Model.SensorTemperat.CurrentTemperature</span>
+
+        @{
+            string id = ViewBag.room + "_" + ViewBag.device + "_cl-Auto";
+        }
+        <a class="bt_api" elemid1="@id" command="cl-Auto" typeofreturn="cl-Auto" href="">
+            @if (Model.Auto)
+            {
+                <img id="@id" src="~/Content/Images/AutoOn.png" class="imgBt" />
+            }
+            else
+            {
+                <img id="@id" src="~/Content/Images/AutoOff.png" class="imgBt" />
+            }
+        </a>
+
+        @{
+            id = ViewBag.room + "_" + ViewBag.device + "_cl-heat";
+        }
+        <a class="bt_api" href="" command="cl-heat" typeofreturn="cl-heat" elemid1="@id">
+            @if (Model.Heat.State == StateOnOff.Off)
+            {
+                <img id="@id" src="~/Content/Images/hot1.png" class="imgBt" />
+            }
+            else
+            {
+                <img id="@id" src="~/Content/Images/hot1.png" class="imgBt imgColor" />
+            }
+        </a>
+
+        @{
+            id = ViewBag.room + "_" + ViewBag.device + "_cl-cond";
+        }
+        <a class="bt_api" href="" command="cl-cond" typeofreturn="cl-cond" elemid1="@id">
+            @if (Model.Cond.State == StateOnOff.Off)
+            {
+                <img id="@id" src="~/Content/Images/ice2.png" class="imgBt" />
+            }
+            else
+            {
+                <img id="@id" src="~/Content/Images/ice2.png" class="imgBt imgColor" />
+            }
+        </a>
+        @Html.Partial("Device/Temper")
+    </div>
+</div>
